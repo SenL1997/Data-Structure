@@ -1,7 +1,7 @@
 #include <iostream>
-#include <list>
-#include "linkedList.h"
-#include "linkedList.cpp"
+#include <vector>
+#include "seqList.h"
+#include "seqList.cpp"
 #include "timer.h"
 
 using namespace std;
@@ -13,32 +13,31 @@ int main()
     Timer t1;
 
 
-    linkedList<double> s;
-    for (i=0;i<100000;i++)
+    seqList<int> s;
+    s.create(1);
+    for (i=0;i<10000000;i++)
     {
         s.insert(i,i);
     }
-    cout<<"linkedList Created"<<endl;
     t1.reset();
     s.clear();
-    cout << "linkedList clear() Time(100000): "<<t1.elapsed_us()<<" us"<<endl;
+    cout << "seqList clear() Time: "<<t1.elapsed_us()<<" us"<<endl;
     t1.reset();
 
-    list <double> v;
-    for (i=0;i<100000;i++)
+    vector <int> v;
+    for (i=0;i<10000000;i++)
     {
         v.push_back(i);
     }
-    cout<<"List Created"<<endl;
     t1.reset();
-    v.clear();
-    cout << "List clear() Time(100000): "<<t1.elapsed_us()<<" us"<<endl;
-//    cout << "linkedList: ";
+    s.clear();
+    cout << "Vector clear() Time: "<<t1.elapsed_us()<<" us"<<endl;
+//    cout << "seqList: ";
 //    s.traverse();
 //    s.reverse();
 //    cout << "\n\nReverse(): ";
 //    s.traverse();
-//    cout << "\n\nThe length of linkedList is " << s.length() << endl;
+//    cout << "\n\nThe length of seqList is " << s.length() << endl;
 //
 //    s.insert(3,'c');
 //    cout <<"\nAfter insert(3,'c'): ";
